@@ -215,7 +215,7 @@ def oth_r():
             p = False
 
 
-Sprint("...welcome to the simulation of calculator...")
+print("...welcome to the simulation of calculator...")
 print("choose the options listed below:")
 q = True
 while q:
