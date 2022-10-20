@@ -1,4 +1,6 @@
 import math as m
+from numpy import *
+import sys
 
 
 def ar_m():
@@ -44,7 +46,7 @@ def tri_gn():
     print(f"{'*' * 2}TRIGONOMETRIC OPERATIONS{'*' * 2}")
     while j:
         print("select the option below:")
-        print("1.continue 2.exit")
+        print("1.continue 2.matrices 3.exit")
         n = int(input())
         if n == 1:
             b = eval(input("enter a value: "))
@@ -63,6 +65,61 @@ def tri_gn():
             print(f" atanh{(b)}= {eval('m.atanh(m.tanh(m.radians(b)))')}")
             print("important relations: 'sec: 1/cos' 'cot: 1/tan' 'cosec: 1/sin','tan: sin/cos'")
         if n == 2:
+            q = True
+            while q:
+                print("1.Transpose 2.matrix((add/sub/div)3.matrix(mul)4.exit")
+                ch = int(input("enter your choice"))
+                if ch == 1:
+                    r, c = [int(a) for a in input("enter rows,cols for 1'st matrix: ").split()]
+                    str1 = input("enter the first matrix elements :")
+                    x = reshape(matrix(str1), (r, c))
+                    print("matrix A:", x)
+                    print('the transpose matrix')
+                    z = x.transpose()
+                    print("A= ", z)
+                if ch == 2:
+                    print(
+                        "NOTE:- 1.FOR AN MATRIX OPERATION LIKE ADD/SUB/DIV NO.OF ROWS AND COLUMNS OF EACH OTHER MATRIX SHOULD BE SAME..M*N")
+                    r, c = [int(a) for a in input("enter rows,cols for 1'st matrix: ").split()]
+                    r1, c1 = [int(a) for a in input("enter rows,cols, for 2nd matrix: ").split()]
+                    if r == r1 and c == c1:
+                        str1 = input("enter the first matrix elements :")
+                        str2 = input("enter the second matrix elements : ")
+                        x = reshape(matrix(str1), (r, c))
+                        y = reshape(matrix(str2), (r1, c1))
+                        print("matrix A:", x)
+                        print("matrix B:", y)
+                        z = x + y
+                        k = x - y
+                        l = x / y
+                        print("sum of matrix= ", z)
+                        print("difference of matrix  = ", k)
+                        print("division of matrix: ", l)
+                    else:
+                        print("invalid row /column entry")
+                        exit()
+
+                if ch == 3:
+                    print(
+                        "NOTE:- 1.FOR AN MATRIX MULTIPLICATON NO.OF ROWS OF(1'ST MATRIX) AND COLUMNS OF (2'ND MATRIX)SS SHOULD BE SAME..M*N")
+                    r, c = [int(a) for a in input("enter rows,cols for 1'st matrix: ").split()]
+                    r1, c1 = [int(a) for a in input("enter rows,cols, for 2nd matrix: ").split()]
+                    if r == c1:
+                        str1 = input("enter the first matrix elements :")
+                        str2 = input("enter the second matrix elements : ")
+                        x = reshape(matrix(str1), (r, c))
+                        y = reshape(matrix(str2), (r1, c1))
+                        print("matrix A:", x)
+                        print("matrix B:", y)
+                        print('the multiplication of two matrix is:', end=" ")
+                        z = x * y
+                        print(z)
+                    else:
+                        print("multiplication is not possible...please read the note mentioned..!")
+                        exit()
+                if ch == 4:
+                    q = False
+        if n == 3:
             j = False
 
 
@@ -193,14 +250,16 @@ def oth_r():
             print(f"octal : {oct(b)}")
         if c == 2:
             b = eval(input("enter a number: "))
-            print(f"fact = {m.factorial(b)}")
             print(f"log with base 10 : {m.log10(b)}")
             print(f"log with base 2 :{m.log2(b)}")
-            g = eval(input("enter the specified base value: "))
-            print(f" log with specified base: {m.log(b, g)}")
             print(f"radian : {m.radians(b)}")
             h = eval(input("enter the exponential(e^x) power value: "))
             print(f"e^{h}: {m.exp(h)}")
+            t = eval(input("enter a number to know it's factorial value :"))
+            print(f"fact = {m.factorial(t)}")
+            k = eval(input("enter the value to calculate log: "))
+            g = eval(input("enter the specified base value: "))
+            print(f" log value with specified base: {m.log(k, g)}")
 
         if c == 3:
             b = eval(input("enter a number: "))
@@ -219,7 +278,7 @@ print("...welcome to the simulation of calculator...")
 print("choose the options listed below:")
 q = True
 while q:
-    print("1.ARITHMETIC CALCULATIONS\n2.BITWISE OPERATIONS\n3.TRIGNOMETRY\n4.CMPLX/VEC\n5.OTHERS\n6.EXIT")
+    print("1.ARITHMETIC CALCULATIONS\n2.BITWISE OPERATIONS\n3.TRIGNOMETRY/MATRICES\n4.CMPLX/VEC\n5.OTHERS\n6.EXIT")
     ch = int(input())
     if ch == 1:
         ar_m()
